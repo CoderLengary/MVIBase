@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.CoderLengary'
+
+android {
+    compileSdkVersion build_version.compileSdkVersion
+
+
+    defaultConfig {
+        minSdkVersion build_version.minSdkVersion
+        targetSdkVersion build_version.targetSdkVersion
+        versionCode build_version.versionCode
+        versionName build_version.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api "androidx.appcompat:appcompat:$versions.support"
+    api "androidx.core:core-ktx:$versions.core_ktx"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+
+    // AutoDispose
+    api "com.uber.autodispose:autodispose:$versions.autoDispose"
+    api "com.uber.autodispose:autodispose-ktx:$versions.autoDispose"
+    api "com.uber.autodispose:autodispose-android:$versions.autoDispose"
+    api "com.uber.autodispose:autodispose-android-archcomponents-ktx:$versions.autoDispose"
+
+    // Kodein
+    api "org.kodein.di:kodein-di-generic-jvm:$versions.kodein"
+    api "org.kodein.di:kodein-di-framework-android-core:$versions.kodein"
+    api "org.kodein.di:kodein-di-framework-android-support:$versions.kodein"
+    api "org.kodein.di:kodein-di-framework-android-x:$versions.kodein"
+
+    // RxJava
+    api "io.reactivex.rxjava2:rxjava:$versions.rxjava"
+    api "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
+    api "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin"
+
+}
+repositories {
+    mavenCentral()
+}
